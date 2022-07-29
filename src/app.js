@@ -12,7 +12,10 @@ export default function App() {
     //allow hold a die and if isheld true, change background color (x)
     //click on button will toggle hold(x)
     //when it's onhold, roll dice will not roll them (x)
-    //set a winning coniddtion which is all on hold and all match - hint use array.every
+    //set a winning coniddtion which is all on hold and all match - hint use array.every(x)
+    //show confetti when win and hide otherwise (x) > use
+    //reset game after winning (x)
+    //confetti resize (x)
 
     const [dice, setDice]= React.useState(rollNewDice())
     const [tenzies, setTenzies]=React.useState(false)
@@ -27,6 +30,10 @@ export default function App() {
             })
         }
         return newDice
+    }
+    function reSet(){
+        setDice(rollNewDice())
+        setTenzies(false)
     }
     function rollDice(){
         // setDice(rollNewDice())
@@ -66,13 +73,14 @@ export default function App() {
         })
     }
 
-    function winning(){
+    React.useEffect(()=>{
         const allHeld=dice.every((die)=>die.isHeld)
         const allMatch=dice.every((die)=>die.value===dice[0].value)
         if (allHeld&&allMatch) {
             setTenzies(true)
         }
-    }
+    }, [dice])
+
     const diceElements = dice.map(die=>{
         return (
             <Die
@@ -87,14 +95,18 @@ export default function App() {
     return (
         
         <main className="main">
-            <Confetti />
+            {tenzies&&
+            <Confetti 
+                width="360px" 
+            />}
+            
             <div className="innerMain">
                 <h1>Tenzies</h1>
                 <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
                 <div className="dice" >
                     {diceElements}
                 </div>
-                <button className="roll" onClick={rollDice}>Roll</button>
+                <button className="roll" onClick={!tenzies?rollDice:reSet}>{!tenzies?"Roll":"New Game"}</button>
             </div>
         </main>
     )
