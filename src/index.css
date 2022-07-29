@@ -13,7 +13,6 @@
     margin-left: auto; 
     margin-right: auto;
     margin-top: 69px;
-
     background: #0B2434;
 }
 
@@ -68,6 +67,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    font-size: 2em; 
 }
 
 .roll {
@@ -81,4 +81,65 @@
     border-radius: 5px;
     border-width: 0px;
     cursor: pointer;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.two {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.three{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.four {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    padding: 5px;
+    padding-left: 10px;
+    justify-content: space-evenly;
+} 
+
+.five {
+    display: grid;
+    grid-template-areas: 
+        "dot1 . dot2"
+        ". dot3 ."
+        "dot4 . dot5"
+    ;
+    padding: 5px;
+    justify-content: space-evenly;
+}
+
+.six{
+    display: grid;
+    grid-template: 1fr 1fr 1fr/ 1fr 1fr;
+    padding: 5px;
+    padding-left: 10px;
+    justify-content: space-around;
+}
+.dot1{
+    grid-area: dot1;
+}
+.dot2{
+    grid-area: dot2;
+}
+.dot3{
+    grid-area: dot3;
+}
+.dot4{
+    grid-area: dot4;
+}
+.dot5{
+    grid-area: dot5;
 }

@@ -4,6 +4,7 @@ import Die from "./components/die.js"
 import {nanoid} from "nanoid"
 import Confetti from "react-confetti"
 import { faListCheck } from "@fortawesome/free-solid-svg-icons"
+import Dot from "./components/dot.js"
 
 
 
@@ -16,6 +17,15 @@ export default function App() {
     //show confetti when win and hide otherwise (x) > use
     //reset game after winning (x)
     //confetti resize (x)
+
+    /*extra credit
+    1. make dots
+    a. make a dot component and inport it
+    b. show doct number matching cunt
+    c.format dots
+    2 track time and times
+    3. localstorage save
+    */
 
     const [dice, setDice]= React.useState(rollNewDice())
     const [tenzies, setTenzies]=React.useState(false)
@@ -106,6 +116,7 @@ export default function App() {
                 <div className="dice" >
                     {diceElements}
                 </div>
+                
                 <button className="roll" onClick={!tenzies?rollDice:reSet}>{!tenzies?"Roll":"New Game"}</button>
             </div>
         </main>
