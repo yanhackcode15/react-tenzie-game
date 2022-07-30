@@ -143,3 +143,27 @@
 .dot5{
     grid-area: dot5;
 }
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    font-size: 12px;
+    
+}
+.stats h4 {
+    color: rgb(237, 190, 89);
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.timer {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+

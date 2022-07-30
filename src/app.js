@@ -5,11 +5,14 @@ import {nanoid} from "nanoid"
 import Confetti from "react-confetti"
 import { faListCheck } from "@fortawesome/free-solid-svg-icons"
 import Dot from "./components/dot.js"
+import MyTimer from "./components/myTimer"
+import { useStopwatch } from 'react-timer-hook';
 
 
 
 
 export default function App() {
+
     //allow hold a die and if isheld true, change background color (x)
     //click on button will toggle hold(x)
     //when it's onhold, roll dice will not roll them (x)
@@ -19,16 +22,29 @@ export default function App() {
     //confetti resize (x)
 
     /*extra credit
-    1. make dots
+    1. make dots (x)
     a. make a dot component and inport it
     b. show doct number matching cunt
     c.format dots
-    2 track time and times
-    3. localstorage save
+    2 track how many times rolled (x)
+    3. Track how much time
+    4. localstorage save
     */
+
+    const {
+        seconds,
+        minutes,
+        hours,
+        days,
+        isRunning,
+        start,
+        pause,
+        reset,
+      } = useStopwatch({ autoStart: true });
 
     const [dice, setDice]= React.useState(rollNewDice())
     const [tenzies, setTenzies]=React.useState(false)
+    const [rolled, setRolled]=React.useState(0)
     function rollNewDice(){
         //generate an array of 10 random numbers 1-6
         const newDice=[]
@@ -44,9 +60,11 @@ export default function App() {
     function reSet(){
         setDice(rollNewDice())
         setTenzies(false)
+        setRolled(0)
+        reset()
+        start()
     }
     function rollDice(){
-        // setDice(rollNewDice())
         //only genereate die for those not on hold
         const newDice=[]
         for (let i=0; i<10; i++){
@@ -63,6 +81,7 @@ export default function App() {
             
         }
         setDice(newDice) 
+        setRolled(prev=>prev+1)
     }
     function toggleHeld(id){
         //setDice state change
@@ -91,6 +110,13 @@ export default function App() {
         }
     }, [dice])
 
+    React.useEffect(()=>{
+        if (tenzies) {
+            reset()
+        }
+        
+    }, [tenzies, reset])
+
     const diceElements = dice.map(die=>{
         return (
             <Die
@@ -109,6 +135,14 @@ export default function App() {
             <Confetti 
                 width="360px" 
             />}
+            <head className="stats">
+                <h4>Rolled: {rolled}</h4>
+                <div className="time">
+                    <h4>Time Lapsed: </h4> 
+                    <MyTimer days={days} hours={hours} minutes={minutes} seconds={seconds} isRunning={isRunning}/>  
+                </div>
+                    
+            </head>
             
             <div className="innerMain">
                 <h1>Tenzies</h1>
