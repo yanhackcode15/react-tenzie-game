@@ -27,7 +27,7 @@ export default function App() {
     b. show doct number matching cunt
     c.format dots
     2 track how many times rolled (x)
-    3. Track how much time
+    3. Track how much time (x)
     4. localstorage save
     */
 
@@ -136,11 +136,12 @@ export default function App() {
                 width="360px" 
             />}
             <head className="stats">
-                <h4>Rolled: {rolled}</h4>
-                <div className="time">
-                    <h4>Time Lapsed: </h4> 
-                    <MyTimer days={days} hours={hours} minutes={minutes} seconds={seconds} isRunning={isRunning}/>  
+                <div className="label">
+                    <h4>Rolled: {rolled}</h4>
+                    <h4 className="paddingLeft">Time Lapsed:</h4>
                 </div>
+                <MyTimer days={days} hours={hours} minutes={minutes} seconds={seconds} isRunning={isRunning}/>
+                
                     
             </head>
             

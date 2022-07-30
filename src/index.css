@@ -146,24 +146,29 @@
 
 .stats {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 5px 20px;
     font-size: 12px;
     
 }
-.stats h4 {
-    color: rgb(237, 190, 89);
-}
 
-.time {
+.label {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+.stats h4 {
+    color: rgb(237, 190, 89);
+    
 }
 
 .timer {
     display: flex;
     justify-content: space-between;
-    margin: 5px;
+    margin: 5px 5px;
 }
 
+.paddingLeft {
+    padding-left: 30px;
+}
