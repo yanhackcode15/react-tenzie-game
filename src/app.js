@@ -57,7 +57,7 @@ export default function App() {
         }
         return newDice
     }
-    function reSet(){
+    function newGame(){
         setDice(rollNewDice())
         setTenzies(false)
         setRolled(0)
@@ -113,9 +113,10 @@ export default function App() {
     React.useEffect(()=>{
         if (tenzies) {
             reset()
+            
         }
         
-    }, [tenzies, reset])
+    }, [tenzies])
 
     const diceElements = dice.map(die=>{
         return (
@@ -135,7 +136,7 @@ export default function App() {
             <Confetti 
                 width="360px" 
             />}
-            <head className="stats">
+            <header className="stats">
                 <div className="label">
                     <h4>Rolled: {rolled}</h4>
                     <h4 className="paddingLeft">Time Lapsed:</h4>
@@ -143,7 +144,7 @@ export default function App() {
                 <MyTimer days={days} hours={hours} minutes={minutes} seconds={seconds} isRunning={isRunning}/>
                 
                     
-            </head>
+            </header>
             
             <div className="innerMain">
                 <h1>Tenzies</h1>
@@ -152,7 +153,8 @@ export default function App() {
                     {diceElements}
                 </div>
                 
-                <button className="roll" onClick={!tenzies?rollDice:reSet}>{!tenzies?"Roll":"New Game"}</button>
+                <button className="roll" onClick={!tenzies?rollDice:newGame}>{!tenzies?"Roll":"New Game"}</button>
+                {/* <button onClick={reset}>reset timer</button> */}
             </div>
         </main>
     )

@@ -51,6 +51,7 @@
     grid-template-rows: auto auto; 
     gap: 15px 15px;
     margin-top: 30px;
+    
 }
 
 .die {
@@ -68,6 +69,7 @@
     align-items: center;
     cursor: pointer;
     font-size: 2em; 
+    padding: 4px;
 }
 
 .roll {
@@ -83,19 +85,30 @@
     cursor: pointer;
 }
 
+.dice_dots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
 .dot {
     width: 5px;
     height: 5px;
     background-color: black;
     border-radius: 50%;
+    visibility: hidden;
+    justify-self: center;
 }
 
-.two {
-    display: flex;
-    justify-content: space-around;
-    padding: 5px;
+.dice_dots.one > *:nth-child(5),
+.dice_dots.two > *:nth-child(1), .dice_dots.two > *:nth-child(9),
+.dice_dots.three > *:nth-child(1), .dice_dots.three > *:nth-child(5), .dice_dots.three > *:nth-child(9),
+.dice_dots.four > *:nth-child(1), .dice_dots.four > *:nth-child(3), .dice_dots.four > *:nth-child(7), .dice_dots.four > *:nth-child(9),
+.dice_dots.five > *:nth-child(1), .dice_dots.five > *:nth-child(3), .dice_dots.five > *:nth-child(5), .dice_dots.five > *:nth-child(7), .dice_dots.five > *:nth-child(9),
+.dice_dots.six > *:nth-child(1), .dice_dots.six > *:nth-child(3), .dice_dots.six > *:nth-child(4), .dice_dots.six > *:nth-child(6), .dice_dots.six > *:nth-child(7), .dice_dots.six > *:nth-child(9) {
+    visibility: visible;
 }
-
+/* 
 .three{
     display: flex;
     justify-content: space-around;
@@ -127,7 +140,7 @@
     padding: 5px;
     padding-left: 10px;
     justify-content: space-around;
-}
+} */
 .dot1{
     grid-area: dot1;
 }

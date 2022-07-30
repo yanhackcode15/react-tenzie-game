@@ -4,7 +4,7 @@ import Dot from "./dot"
 
 
 
-export default function App(props) {
+export default function Die(props) {
     //render the number of dots based on the value
     const dots = []
     function generateDots(count){
@@ -69,12 +69,21 @@ export default function App(props) {
     }
     return (     
         <div 
-            className={"die "+dotsClassName(props.value)} 
+            className={"die dice_dots "+dotsClassName(props.value)} 
             onClick={props.onClick} 
             style={styles}
         >
             {/* {props.value} */}
-            {generateDots(props.value)}
+            {/* {generateDots(props.value)} */}
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
         </div>
  
     )
