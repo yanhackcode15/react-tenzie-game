@@ -5,7 +5,7 @@ module.exports = {
    mode: "development", 
    entry: './src/index.js',
    output: {
-      path: path.join(__dirname, '/bundle'),
+      path: path.join(__dirname, '/docs'),
       filename: './src/index_bundle.js'
    },
    target: "web",
