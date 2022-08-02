@@ -112,7 +112,7 @@ export default function App() {
 
     React.useEffect(()=>{
         if (tenzies) {
-            reset()
+            pause()
             
         }
         
